@@ -1,6 +1,7 @@
 // Copyright 2022 NNTU-CS
 #ifndef INCLUDE_TPQUEUE_H_
 #define INCLUDE_TPQUEUE_H_
+#include <string>
 
 template<typename T>
 class TPQueue {
@@ -15,6 +16,7 @@ class TPQueue {
     tmp->next = nullptr;
     return tmp;
   }
+
  public:
   TPQueue() : head(nullptr) {}
   void push(const T& val) {
@@ -24,7 +26,7 @@ class TPQueue {
       head = add(val);
         } else if (head->value.prior > val.prior) {
       Item* node = head;
-      while (node->next!=nullptr && node->next->value.prior > val.prior) {
+      while (node->next != nullptr && node->next->value.prior > val.prior) {
         node = node->next;
       }
       Item* temp = add(val);
@@ -39,8 +41,7 @@ class TPQueue {
   T pop() {
     if (head == nullptr) {
       throw std::string("Empty");
-    }
-    else {
+    } else {
       Item* tmp = head->next;
       T val = head->value;
       delete head;
