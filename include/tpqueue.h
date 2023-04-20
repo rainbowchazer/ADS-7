@@ -24,7 +24,7 @@ class TPQueue {
     temp->value = val;
     if (head == nullptr) {
       head = add(val);
-        } else if (head->value.prior > val.prior) {
+        } else if (head->value.prior >= val.prior) {
       Item* node = head;
       while (node->next != nullptr && node->next->value.prior > val.prior) {
         node = node->next;
